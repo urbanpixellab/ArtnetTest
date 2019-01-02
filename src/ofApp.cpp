@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-//    ofSetFrameRate(30);
+//    ofSetFrameRate(25);
     //https://github.com/hideakitai/ofxArtnetProtocol
 //    artnet1.begin("192.168.178.200");
 //    artnet2.begin("10.0.0.40");
@@ -27,9 +27,9 @@ void ofApp::update(){
     {
         if (i <= counter)
         {
-            universe0[i*3+0] = 255*brightness;
-            universe0[i*3+1] = 255*brightness;
-            universe0[i*3+2] = 255*brightness;
+            universe0[i*3+0] = 255*(brightness/255.);
+            universe0[i*3+1] = 255*(brightness/255.);
+            universe0[i*3+2] = 255*(brightness/255.);
         }
         else
         {
