@@ -1,2 +1,3 @@
 ofxArtnetProtocol
+ofxGui
 ofxNetwork
