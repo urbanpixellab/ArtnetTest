@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxArtnetProtocol.h"
-#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -28,8 +27,5 @@ private:
     bool        direction;
     
     
-    ofxPanel        gui;
-    ofxIntSlider    brightness;
-    ofxToggle       toggle;
     int             counter;
 };

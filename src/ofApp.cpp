@@ -2,18 +2,13 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-//    ofSetFrameRate(25);
+    ofSetFrameRate(25);
     //https://github.com/hideakitai/ofxArtnetProtocol
 //    artnet1.begin("192.168.178.200");
-//    artnet2.begin("10.0.0.40");
     artnet1.begin("192.168.12.200");
-//    artnet.begin("192.168.178.200");
     fbo.allocate(150, 1,GL_RGB);
     count = 0;
     direction = true;
-    gui.setup();
-    gui.add(toggle.setup("on/off", false));
-    gui.add(brightness.setup("brightness",100,0,255));
     counter = 0;
     
 }
@@ -27,9 +22,9 @@ void ofApp::update(){
     {
         if (i <= counter)
         {
-            universe0[i*3+0] = 255*(brightness/255.);
-            universe0[i*3+1] = 255*(brightness/255.);
-            universe0[i*3+2] = 255*(brightness/255.);
+            universe0[i*3+0] = 255;
+            universe0[i*3+1] = 255;
+            universe0[i*3+2] = 255;
         }
         else
         {
@@ -41,18 +36,12 @@ void ofApp::update(){
     counter++;
     if (counter >= 150) counter = 0;
     
-    if (toggle)
+    int universe = 0;
+    int chnCount = 450;//33 leds * 3
+    for (int i = 0; i < 8; i++)
     {
-        int universe = 0;
-        int chnCount = 450;//33 leds * 3
-        artnet1.send(universe0,0,chnCount);
-        artnet1.send(universe0,1,chnCount);
-        artnet1.send(universe0,2,chnCount);
-        artnet1.send(universe0,3,chnCount);
-        artnet1.send(universe0,4,chnCount);
-        artnet1.send(universe0,5,chnCount);
-        artnet1.send(universe0,6,chnCount);
-        artnet1.send(universe0,7,chnCount);
+        universe = i;
+        artnet1.send(universe0,universe,chnCount);
     }
 }
 
@@ -84,7 +73,6 @@ void ofApp::draw()
 //    float scaley = ofGetHeight() / fbo.getHeight();
 //    ofScale(scalex, scaley);
 //    fbo.draw(0, 0);
-    gui.draw();
 }
 
 //--------------------------------------------------------------
