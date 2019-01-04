@@ -12,4 +12,6 @@ Before running the following commands, get the latest download URL for the platf
     ./install_dependencies.sh
     ENTER
     ENTER
-
+    cd ..
+    ./compileOF.sh -j3
+    make
