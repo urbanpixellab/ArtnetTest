@@ -21,6 +21,7 @@ private:
     ofxArtnetProtocol artnet1;
     //uint8_t universe1[6*6*3];//33leds = 99 values in rgb
     uint8_t universe0[150*3];//33leds = 99 values in rgb
+    //uint8_t universe0[150*3];//33leds = 99 values in rgb
     ofFbo       fbo;
     ofPixels    pixels;
     int         count;

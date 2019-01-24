@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofSetFrameRate(25);
+    ofSetFrameRate(30);
     //https://github.com/hideakitai/ofxArtnetProtocol
 //    artnet1.begin("192.168.178.200");
     artnet1.begin("192.168.12.200");
@@ -17,8 +17,9 @@ void ofApp::setup(){
 void ofApp::update(){
 
     //map the arrays
-
-    for (int i = 0; i < 150; i++)
+    int leds = 150;
+    
+    for (int i = 0; i < leds; i++)
     {
         if (i <= counter)
         {
@@ -34,10 +35,10 @@ void ofApp::update(){
         }
     }
     counter++;
-    if (counter >= 150) counter = 0;
+    if (counter >= leds) counter = 0;
     
     int universe = 0;
-    int chnCount = 450;//33 leds * 3
+    int chnCount = leds*3;//33 leds * 3
     for (int i = 0; i < 8; i++)
     {
         universe = i;
